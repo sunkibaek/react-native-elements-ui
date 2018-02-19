@@ -1,8 +1,30 @@
 import React from "react";
 import { Component } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, FlatListProperties, StyleSheet, View } from "react-native";
 
+import Card from "./Card";
 import NavigationBar from "./NavigationBar";
+
+interface IRecipe {
+  backgroundImageSource: any;
+  key: string;
+  subTitle: string;
+  title: string;
+}
+const recipes: IRecipe[] = [
+  {
+    backgroundImageSource: require("../assets/breakfast.jpg"),
+    key: "breakfast",
+    subTitle: "START YOUR DAY RIGHT",
+    title: "Breakfast"
+  },
+  {
+    backgroundImageSource: require("../assets/vegetarian.jpg"),
+    key: "vegetarian",
+    subTitle: "POWER VEGETABLE",
+    title: "Vegetarian"
+  }
+];
 
 export default class App extends Component {
   public render() {
@@ -10,55 +32,42 @@ export default class App extends Component {
       <View style={styles.container}>
         <NavigationBar />
 
-        <View style={styles.body}>
-          <View style={{ borderRadius: 8, height: 280 }}>
-            <Image
-              source={require("../assets/vegetarian.jpg")}
-              style={{ borderRadius: 8 }}
-            />
-
-            <View style={styles.textsOnImage}>
-              <Text
-                style={{
-                  color: "#FFFFFF",
-                  fontSize: 15,
-                  fontWeight: "600",
-                  opacity: 0.7
-                }}
-              >
-                START YOUR DAY RIGHT
-              </Text>
-
-              <Text
-                style={{ fontSize: 24, color: "#FFFFFF", fontWeight: "700" }}
-              >
-                Breakfast
-              </Text>
-            </View>
-          </View>
-        </View>
+        <FlatList
+          ItemSeparatorComponent={this.renderItemSeperator}
+          contentContainerStyle={styles.body}
+          data={recipes}
+          renderItem={this.renderItem}
+        />
       </View>
     );
   }
+
+  private renderItem: FlatListProperties<IRecipe>["renderItem"] = ({
+    item
+  }) => (
+    <Card
+      backgroundImageSource={item.backgroundImageSource}
+      subTitle={item.subTitle}
+      title={item.title}
+    />
+  );
+
+  private renderItemSeperator: FlatListProperties<
+    IRecipe
+  >["ItemSeparatorComponent"] = () => <View style={styles.cardSeperator} />;
 }
 
 const styles = StyleSheet.create({
   body: {
     alignItems: "center",
     backgroundColor: "#F5F5F5",
-    flex: 1,
-    justifyContent: "center"
+    padding: 16
+  },
+  cardSeperator: {
+    height: 16
   },
   container: {
     backgroundColor: "#F5F5F5",
     flex: 1
-  },
-  textsOnImage: {
-    bottom: 0,
-    left: 0,
-    padding: 16,
-    position: "absolute",
-    right: 0,
-    top: 0
   }
 });
