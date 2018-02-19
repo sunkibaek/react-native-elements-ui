@@ -1,41 +1,64 @@
 import React from "react";
 import { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
-const instructions = Platform.select({
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu",
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu"
-});
+import NavigationBar from "./NavigationBar";
 
 export default class App extends Component {
   public render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <NavigationBar />
+
+        <View style={styles.body}>
+          <View style={{ borderRadius: 8, height: 280 }}>
+            <Image
+              source={require("../assets/vegetarian.jpg")}
+              style={{ borderRadius: 8 }}
+            />
+
+            <View style={styles.textsOnImage}>
+              <Text
+                style={{
+                  color: "#FFFFFF",
+                  fontSize: 15,
+                  fontWeight: "600",
+                  opacity: 0.7
+                }}
+              >
+                START YOUR DAY RIGHT
+              </Text>
+
+              <Text
+                style={{ fontSize: 24, color: "#FFFFFF", fontWeight: "700" }}
+              >
+                Breakfast
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  body: {
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    backgroundColor: "#F5F5F5",
     flex: 1,
     justifyContent: "center"
   },
-  instructions: {
-    color: "#333333",
-    marginBottom: 5,
-    textAlign: "center"
+  container: {
+    backgroundColor: "#F5F5F5",
+    flex: 1
   },
-  welcome: {
-    fontSize: 20,
-    margin: 10,
-    textAlign: "center"
+  textsOnImage: {
+    bottom: 0,
+    left: 0,
+    padding: 16,
+    position: "absolute",
+    right: 0,
+    top: 0
   }
 });
