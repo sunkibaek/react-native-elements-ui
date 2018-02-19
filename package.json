@@ -1,0 +1,30 @@
+{
+  "name": "ElementsUI",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.2.0",
+    "react-native": "0.53.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.38",
+    "@types/react-native": "^0.52.12",
+    "babel-jest": "22.2.2",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.3.0",
+    "prettier": "^1.10.2",
+    "react-native-typescript-transformer": "^1.2.3",
+    "react-test-renderer": "16.2.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.8.0",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.7.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
