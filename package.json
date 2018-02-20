@@ -9,11 +9,13 @@
   "dependencies": {
     "react": "16.2.0",
     "react-native": "0.53.0",
-    "react-native-linear-gradient": "^2.4.0"
+    "react-native-linear-gradient": "^2.4.0",
+    "react-navigation": "^1.1.0-rc.5"
   },
   "devDependencies": {
     "@types/react": "^16.0.38",
     "@types/react-native": "^0.52.12",
+    "@types/react-navigation": "^1.0.32",
     "babel-jest": "22.2.2",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.3.0",
