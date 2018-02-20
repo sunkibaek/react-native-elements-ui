@@ -1,9 +1,17 @@
 import React from "react";
-import { Image, ImageProperties, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  ImageProperties,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 
 interface ICardProps {
   backgroundImageSource: ImageProperties["source"];
+  onPress: () => void;
   subTitle: string;
   title: string;
 }
@@ -50,21 +58,28 @@ const styles = StyleSheet.create({
   }
 });
 
-const Card = ({ backgroundImageSource, subTitle, title }: ICardProps) => (
-  <View style={styles.container}>
-    <Image source={backgroundImageSource} style={styles.backgroundImage} />
+const Card = ({
+  backgroundImageSource,
+  onPress,
+  subTitle,
+  title
+}: ICardProps) => (
+  <TouchableOpacity onPress={onPress}>
+    <View style={styles.container}>
+      <Image source={backgroundImageSource} style={styles.backgroundImage} />
 
-    <View style={styles.textsOnImage}>
-      <LinearGradient
-        colors={["rgba(0, 0, 0, 1)", "rgba(0, 0, 0, 0)"]}
-        style={styles.gradientBackground}
-      />
+      <View style={styles.textsOnImage}>
+        <LinearGradient
+          colors={["rgba(0, 0, 0, 1)", "rgba(0, 0, 0, 0)"]}
+          style={styles.gradientBackground}
+        />
 
-      <Text style={styles.subTitle}>{subTitle}</Text>
+        <Text style={styles.subTitle}>{subTitle}</Text>
 
-      <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
+      </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 export default Card;
