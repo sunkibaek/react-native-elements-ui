@@ -5,8 +5,11 @@ import { NavigationStackScreenOptions } from "react-navigation";
 
 export default class Category extends Component {
   public static navigationOptions: NavigationStackScreenOptions = {
-    headerBackTitle: "Recipes",
-    title: "Category"
+    headerStyle: {
+      backgroundColor: "#80CC26"
+    },
+    headerTintColor: "#FFFFFF",
+    headerTitle: "Category"
   };
 
   public render() {

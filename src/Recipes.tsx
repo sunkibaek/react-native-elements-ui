@@ -29,7 +29,8 @@ const recipes: IRecipe[] = [
 
 export default class Recipes extends Component {
   public static navigationOptions: NavigationStackScreenOptions = {
-    header: null
+    header: null,
+    headerTitle: "Recipes"
   };
 
   public render() {
