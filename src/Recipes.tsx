@@ -1,7 +1,10 @@
 import React from "react";
 import { Component } from "react";
 import { FlatList, FlatListProperties, StyleSheet, View } from "react-native";
-import { NavigationStackScreenOptions } from "react-navigation";
+import {
+  NavigationScreenProps,
+  NavigationStackScreenOptions
+} from "react-navigation";
 
 import Card from "./Card";
 import NavigationBar from "./NavigationBar";
@@ -33,6 +36,10 @@ export default class Recipes extends Component {
     headerTitle: "Recipes"
   };
 
+  private get navigation() {
+    return (this.props as NavigationScreenProps<{}>).navigation;
+  }
+
   public render() {
     return (
       <View style={styles.container}>
@@ -60,7 +67,7 @@ export default class Recipes extends Component {
   );
 
   private onCardPress = () => {
-    this.props.navigation.navigate("Category");
+    this.navigation.navigate("Category");
   };
 
   private renderItemSeperator: FlatListProperties<
